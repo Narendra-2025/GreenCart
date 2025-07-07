@@ -53,7 +53,7 @@ export const AppContextProvider = ({children})=>{
         return totalCount;
     }
 
-    const getCartAmmount = () =>{
+    const getCartAmount = () =>{
         let totalAmount = 0;
         for(const items in cartItems){
             let itemInfo = products.find((product)=> product._id === items);
@@ -61,14 +61,14 @@ export const AppContextProvider = ({children})=>{
                 totalAmount += itemInfo.offerPrice * cartItems[items]
             }
         }
-        return Math.floor(totalAmount*100)/100;
+        return Math.floor(totalAmount*100) / 100;
 
     }
     useEffect(()=>{
         fetchProducts()
     }, [])
 
-    const value = {user, setUser, setIsSeller, isSeller, showUserLogin, setShowUserLogin, products, currency, addToCart, updateCartItem, removeFromCart, cartItems, searchQuery, setSearchQuery, getCartAmmount, getCartCount}
+    const value = {user, setUser, setIsSeller, isSeller, showUserLogin, setShowUserLogin, products, currency, addToCart, updateCartItem, removeFromCart, cartItems, searchQuery, setSearchQuery, getCartAmount, getCartCount}
     return <AppContext.Provider value={value}>
         {children}
     </AppContext.Provider>
